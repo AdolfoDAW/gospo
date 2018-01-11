@@ -84,7 +84,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                 <div id="content_sidebar">
                     <h2 clas="conten_sidebar_title">Resultados</h2>
                     <div>
-                        <input type="search" class="form-control" id="input-search" placeholder="Busqueda..." >
+                        <input type="search" class="form-control" id="input-search" placeholder="Filtrar..." >
                     </div>
                     <!-- LAS TARJETAS DE BUSQUEDA -->
                     <div id="center-result" class="searchable-container">
