@@ -1,8 +1,15 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+include '../DBA/DBA.php';
 
+if($conection){
+    $deportesmoda = [];
+    $queryModa = $conection->query("SELECT nombre,imagen FROM deportes d WHERE d.id_deporte in (SELECT DISTINCT dpc.id_deporte FROM pistas_deporte_centro dpc ORDER BY puntuacion_total DESC LIMIT 4)");
+    
+    while($fila = $queryModa->fetch_array(MYSQLI_ASSOC)){
+        array_push($deportesmoda,$fila);
+    }
+}
+
+echo json_encode($deportesmoda);
+?>
