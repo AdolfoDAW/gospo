@@ -69,8 +69,6 @@ $(document).ready(function () {
                 $("#content_sidebar").empty("");
                 $("#content_sidebar").append("<button id='volver-resultados-centros'>volver</button>");
 
-
-
                 /*------ Funcion Volver ----------------*/
                 $('#volver-resultados-centros').click(function () {
                     console.log(resultados);
