@@ -1,0 +1,76 @@
+/* 
+    Created on : Jan 16, 2018, 6:04:23 PM
+    Author     : Pyrena
+*/
+
+$radio-suave: 3px;
+
+@mixin border-radius($radio-suave){
+    -webkit-border-radius: $radio-suave;
+    -moz-border-radius: $radio-suave;
+    -ms-border-radius: $radio-suave;
+    border-radius: $radio-suave;
+}
+
+
+
+html{
+    box-sizing: border-box;
+}
+
+*,*:after,*:before{
+    box-sizing: inherit;
+}
+
+.deportes-seleccion{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cabecera-selecciones{
+    margin-left: 10px;
+}
+
+.deportes-seleccion-listado{
+    list-style-type: none;
+}
+
+.deportes-moda{
+    
+}
+
+
+.deportes-moda-imagenes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+   padding-left: 0px;
+    
+}
+
+.deportes-moda-elemento{  /*<li> borde negro*/
+    flex-grow: 1;
+    border: 1px solid black;
+    padding: 10px;
+    
+}
+
+.deportes-moda-elemento a{
+    width: 270px;
+    height: 180px;
+  
+    
+}
+
+.img-seleccion{
+    width: 100%;
+    height: auto;
+    @include border-radius($radio-suave);
+}
