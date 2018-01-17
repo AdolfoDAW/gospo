@@ -1,23 +1,34 @@
 $(document).ready(function(){
     
+    resultado = "";
+    
     $.ajax({
-        
-       url: 'seleccion_deportes.php',
+       
+       url: 'model/seleccion/seleccion_deportes.php',
        dataType: 'json',
        success: function(deportesmoda){
-           deportesmoda.foreach(n=>{
+           deportesmoda.forEach(n=>{
             
-               resultado += "<li style='' class='deportes-moda-imagenes'><a><img src='"+n.imagen+"' alt='"+n.imagen+"de"+n.nombre+"'></img></a></li>";
+               resultado += '<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'+
+                                '<div id="'+n.id_deporte+'" class="card">'+
+                                    '<img class="card-img-top" src="resources/img/Deportes/'+n.imagen+'" alt="'+n.nombre+'">'+
+                                    '<div class="card-block"><h5 class="text-bold">'+n.nombre+'</h5></div>'+
+                                '</div>'+
+                            '</div>';
                
                
            });
            
-           $('#deportes-moda-imagenes').append(resultado);
+           $('#deportes-moda').append(resultado);
        }
         
     });
     
-    
+    $('#deportes-moda').on('click','.card',function(){
+        
+        alert("evento click");
+        
+    })
     
     
 });

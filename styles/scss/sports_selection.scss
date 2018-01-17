@@ -28,7 +28,7 @@ html{
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .cabecera-selecciones{
@@ -43,34 +43,27 @@ html{
     
 }
 
-
-.deportes-moda-imagenes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-   padding-left: 0px;
-    
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
 
-.deportes-moda-elemento{  /*<li> borde negro*/
-    flex-grow: 1;
-    border: 1px solid black;
-    padding: 10px;
-    
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
 }
 
-.deportes-moda-elemento a{
-    width: 270px;
-    height: 180px;
-  
-    
-}
-
-.img-seleccion{
+.card-img-top {
+    display: block;
     width: 100%;
     height: auto;
-    @include border-radius($radio-suave);
 }
