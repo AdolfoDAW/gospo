@@ -22,6 +22,9 @@ html {
 .deportes-seleccion-listado {
   list-style-type: none; }
 
+.card:hover {
+  cursor: pointer; }
+
 .card {
   font-size: 1em;
   overflow: hidden;
