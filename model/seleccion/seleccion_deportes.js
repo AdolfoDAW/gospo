@@ -1,5 +1,29 @@
 $(document).ready(function(){
     
+    
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            alert("Latitud: "+pos.lat+"Longitud: "+pos.lng);
+            
+          }, function() {
+            
+          });
+        } else {
+          // Browser doesn't support Geolocation
+         alert("¡Error! Este navegador no soporta la Geolocalización.");
+        }
+      
+/*
+        function refrescarUbicacion() {	
+	navigator.geolocation.watchPosition(mostrarUbicacion);
+    }	
+*/   
     resultado = "";
     
     $.ajax({
@@ -32,7 +56,7 @@ $(document).ready(function(){
         
         
         $.ajax({
-            
+                       
             url: 'model/seleccion/seleccion_deportes.php',
             dataType: 'json',
             success: function(array){
@@ -45,5 +69,3 @@ $(document).ready(function(){
     
     
 });
-
-
