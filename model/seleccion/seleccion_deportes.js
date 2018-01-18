@@ -28,7 +28,20 @@ $(document).ready(function(){
         
         alert("evento click");
         
-    })
+        /* Llamada ajax para enviar coordenadas o ubicación al servidor y consultar*/
+        
+        
+        $.ajax({
+            
+            url: 'model/seleccion/seleccion_deportes.php',
+            dataType: 'json',
+            success: function(array){
+       //TODO          
+            }
+            
+        });
+        
+    });
     
     
 });
