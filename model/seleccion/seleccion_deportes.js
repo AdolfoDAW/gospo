@@ -1,16 +1,18 @@
 $(document).ready(function(){
     
-    
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
+            pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
 
-            alert("Latitud: "+pos.lat+"Longitud: "+pos.lng);
-            
+      console.log("Latitud: "+pos.lat+"Longitud: "+pos.lng);
+            $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY",function(data){
+                console.log(data.results[0].address_components[2].long_name);
+            });
+      
           }, function() {
             
           });
@@ -19,6 +21,8 @@ $(document).ready(function(){
          alert("¡Error! Este navegador no soporta la Geolocalización.");
         }
       
+     
+    
 /*
         function refrescarUbicacion() {	
 	navigator.geolocation.watchPosition(mostrarUbicacion);
