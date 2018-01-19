@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+                                         //Latitud: 39.4271073   Longitud: -0.4118602  PAIPORTA
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -8,9 +8,10 @@ $(document).ready(function(){
               lng: position.coords.longitude
             };
 
-      console.log("Latitud: "+pos.lat+"Longitud: "+pos.lng);
+      console.log("Latitud: "+pos.lat+"Longitud: "+pos.lng);  
             $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY",function(data){
-                console.log(data.results[0].address_components[2].long_name);
+                console.log(data.results);
+                console.log(data.results[0].address_components[3].long_name);
             });
       
           }, function() {
