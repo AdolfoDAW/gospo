@@ -11,7 +11,8 @@ $(document).ready(function(){
       console.log("Latitud: "+pos.lat+"Longitud: "+pos.lng);  
             $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY",function(data){
                 console.log(data.results);
-                console.log(data.results[0].address_components[3].long_name);
+                provincia = data.results[0].address_components[3].long_name;
+                console.log(provincia);
             });
       
           }, function() {
@@ -58,14 +59,15 @@ $(document).ready(function(){
         alert("evento click");
         
         /* Llamada ajax para enviar coordenadas o ubicación al servidor y consultar*/
-        
-        
+        deporteID = $(this).attr("id");
+        console.log(deporteID+" "+provincia);
         $.ajax({
                        
-            url: 'model/seleccion/seleccion_deportes.php',
+            url: "model/seleccion/mostrar_centros_cerca.php?deporte="+deporteID+"&provincia="+provincia, //añadir ? y los valors
             dataType: 'json',
-            success: function(array){
+            success: function(centros){
        //TODO          
+       alert(centros);
             }
             
         });
