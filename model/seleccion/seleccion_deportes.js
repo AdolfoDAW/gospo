@@ -11,8 +11,18 @@ $(document).ready(function(){
       console.log("Latitud: "+pos.lat+"Longitud: "+pos.lng);  
             $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY",function(data){
                 console.log(data.results);
-                provincia = data.results[0].address_components[3].long_name;
-                console.log(provincia);
+                lastPos = data.results[0].address_components.length-1;
+                //provincia = data.results[0].address_components[3].long_name;
+                //console.log(provincia);
+                
+                codigopostal = data.results[0].address_components[lastPos].long_name;
+                subcadena = codigopostal.substring(0,2);
+                switch(subcadena){
+                    case '46': provincia = "Valencia"; break;
+                    case '03': provincia = "Alicante"; break;
+                    case '12': provincia = "Castellon"; break; //sin tilde
+                    default: alert("Provincia no registrada en el sistema");
+                }
             });
       
           }, function() {
@@ -56,18 +66,22 @@ $(document).ready(function(){
     
     $('#deportes-moda').on('click','.card',function(){
         
-        alert("evento click");
+        //alert("evento click");
         
         /* Llamada ajax para enviar coordenadas o ubicación al servidor y consultar*/
         deporteID = $(this).attr("id");
-        console.log(deporteID+" "+provincia);
+        //console.log(deporteID+" "+provincia);
         $.ajax({
-                       
-            url: "model/seleccion/mostrar_centros_cerca.php?deporte="+deporteID+"&provincia="+provincia, //añadir ? y los valors
+            url: "model/seleccion/mostrar_centros_cerca.php",         
+           // url: "model/seleccion/mostrar_centros_cerca.php?deporte="+deporteID+"&provincia="+provincia, 
+            data: "deporte=" + deporteID + "&provincia=" + provincia,
             dataType: 'json',
             success: function(centros){
-       //TODO          
-       alert(centros);
+                    //TODO 
+                    
+                    centros.forEach(n => {
+                    console.log(n);
+                });
             }
             
         });

@@ -3,7 +3,7 @@ include '../DBA/DBA.php';
 //session_start();
 
 if ($conection) {
-    $deporte = $_GET["deporteID"];
+    $deporte = $_GET["deporte"];
     $ciudad = $_GET["provincia"];
     $centros = [];
 
@@ -22,4 +22,5 @@ if ($conection) {
     }
 }
     echo json_encode($centros);
+    header("Location: resultado_seleccion_deportes.php?deporte=$deporte&ciudad=$ciudad");
 ?>
