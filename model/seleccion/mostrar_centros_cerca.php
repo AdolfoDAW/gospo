@@ -22,5 +22,8 @@ if ($conection) {
     }
 }
     echo json_encode($centros);
-    header("Location: resultado_seleccion_deportes.php?deporte=$deporte&ciudad=$ciudad");
+    
+    //Los datos no van a gestionarse en el success de la llamada Ajax, se van a pasar a otra página (duplicado de resultado-centros-busqueda.php)
+   // header("location: http://localhost/gospo/model/seleccion/resultado_seleccion_deportes.php?deporte=$deporte&provincia=$ciudad");
+    
 ?>

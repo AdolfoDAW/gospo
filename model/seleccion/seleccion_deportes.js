@@ -40,7 +40,7 @@ $(document).ready(function(){
 	navigator.geolocation.watchPosition(mostrarUbicacion);
     }	
 */   
-    resultado = "";
+    resultados = "";
     
     $.ajax({
        
@@ -49,7 +49,7 @@ $(document).ready(function(){
        success: function(deportesmoda){
            deportesmoda.forEach(n=>{
             
-               resultado += '<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'+
+               resultados += '<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'+
                                 '<div id="'+n.id_deporte+'" class="card">'+
                                     '<img class="card-img-top" src="resources/img/Deportes/'+n.imagen+'" alt="'+n.nombre+'">'+
                                     '<div class="card-block"><h5 class="text-bold">'+n.nombre+'</h5></div>'+
@@ -59,12 +59,12 @@ $(document).ready(function(){
                
            });
            
-           $('#deportes-moda').append(resultado);
+           $('#deportes-moda').append(resultados);
        }
         
     });
     
-    $('#deportes-moda').on('click','.card',function(){
+    $('#deportes-moda').on('click','.card',function(){  //tiene que funcionar como si el user clicka en Buscar del formulario principal
         
         //alert("evento click");
         
@@ -78,10 +78,12 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(centros){
                     //TODO 
-                    
                     centros.forEach(n => {
                     console.log(n);
-                });
+                    });
+                    //window.location="model/seleccion/resultado_seleccion_deportes.php?deporte="+deporteID+"&provincia="+provincia;
+                    window.location="layout/resultado_seleccion_deportes.php?deporte="+deporteID+"&provincia="+provincia;
+                    
             }
             
         });
