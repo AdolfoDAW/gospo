@@ -32,8 +32,12 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <link href="../vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="../styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+        <!-- Carro compra-->
+        <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <!--Prueba-->
+        <script src="../model/cart/jsonPrueba.js" type="text/javascript"></script>
         <!--Jquery and Jquery UI -->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -59,6 +63,8 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
+        <!-- Carro compra-->
+        <script src="../model/cart/modal.js" type="text/javascript"></script>
 
         <div class="container-grid">
             <div class="header">
@@ -88,6 +94,9 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                                     <a class="nav-link btn btn-primary nav-login" href="#"><span class="nav-login-color">Log In</span></a>
                                 </li>
                             </ul>
+                            <button type="button" class=" nav-item__carro" data-toggle="modal" data-target="#Modal__carrito">
+                                <i class="fab fa-opencart fa-lg"></i><span class="nav-item__carro__contador"></span>
+                            </button>
                         </div>
                     </div>
                 </nav>
@@ -110,7 +119,29 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                 <div id="map"></div>
             </div>
         </div>
-        <script>
+      <!-- Modal -->
+        <div class="modal fade right" id="Modal__carrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg modal-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">RESERVAS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="modal-body" id="carrito__contenido">
+                        
+                    </div>
+                    <hr>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="boton__vaciar" class="btn btn-secondary ">Vaciar</button>
+                        <button type="button" id="boton__reservar" class="btn btn-primary ">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>        <script>
                     $('.left_inner').resizable();
                     $(function () {
                         $('#input-search').on('keyup', function () {
