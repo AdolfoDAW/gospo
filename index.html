@@ -19,6 +19,7 @@
         <link href="vendor/mdb/css/mdb.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom styles for this template -->
         <link href="styles/css/half-slider.css" rel="stylesheet" type="text/css"/> 
+        <link href="styles/css/sports_selection.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!--Jquery and Jquery UI -->
@@ -106,7 +107,7 @@
                             </div>
                         </div>
                         <div class="form-group-btn" style="flex-grow: 1">
-                            <button type="submit" class="btn btn-primary btn-browser">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button type="submit"  class="btn btn-primary btn-browser">Search <i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </form>
                 </div>
@@ -114,22 +115,23 @@
         </section>
 
         <!-- Bloque seleccion deportes -->
+        <form  action="layout/resultado-centros-busqueda.php" method="POST">
+            <div id="deportes-seleccion" class="deportes-seleccion" >
+                <ul id="deportes-seleccion-listado" class="deportes-seleccion-listado">
+                    <li>
+                        <header><h2 class="cabecera-selecciones">Deportes de moda</h2></header>
 
-        <div id="deportes-seleccion" class="deportes-seleccion" >
-            <ul id="deportes-seleccion-listado" class="deportes-seleccion-listado">
-                <li>
-                    <header><h2 class="cabecera-selecciones">Deportes de moda</h2></header>
+                        <div class="container">
+                            <div id="deportes-moda" class="row">
 
-                    <div class="container">
-                        <div id="deportes-moda" class="row">
-
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-            </ul>
-        </div>
-        <!-- Bloque seleccion deportes -->
+                </ul>
+            </div>
+        </form>
+        <!-- Bloque seleccion deportes 
 
         <div id="deportes-seleccion2" class="deportes-seleccion" >
             <ul id="deportes-seleccion-listado2" class="deportes-seleccion-listado">
@@ -145,7 +147,7 @@
 
             </ul>
         </div>
-
+        -->
         <!-- Footer -->
         <footer class="footer">
             <div class="container">

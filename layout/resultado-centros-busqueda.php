@@ -1,7 +1,12 @@
 <?php
 session_start();
-$_SESSION["deporte"] = $_POST["deportes-browser"];
-$_SESSION["ciudad"] = $_POST["ciudades-browser"];
+if(isset($_GET["deporte"])){
+    $_SESSION["deporte"] = $_GET["deporte"];
+    $_SESSION["ciudad"] = $_GET["provincia"];
+}else{
+    $_SESSION["deporte"] = $_POST["deportes-browser"];
+    $_SESSION["ciudad"] = $_POST["ciudades-browser"];
+}
 ?>
 
 <!DOCTYPE html>

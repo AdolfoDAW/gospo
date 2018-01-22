@@ -49,13 +49,12 @@ $(document).ready(function(){
        success: function(deportesmoda){
            deportesmoda.forEach(n=>{
             
-               resultados += '<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'+
+            resultados +=   '<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'+
                                 '<div id="'+n.id_deporte+'" class="card">'+
                                     '<img class="card-img-top" src="resources/img/Deportes/'+n.imagen+'" alt="'+n.nombre+'">'+
                                     '<div class="card-block"><h5 class="text-bold">'+n.nombre+'</h5></div>'+
                                 '</div>'+
                             '</div>';
-               
                
            });
            
@@ -66,24 +65,22 @@ $(document).ready(function(){
     
     $('#deportes-moda').on('click','.card',function(){  //tiene que funcionar como si el user clicka en Buscar del formulario principal
         
-        //alert("evento click");
-        
+                
         /* Llamada ajax para enviar coordenadas o ubicación al servidor y consultar*/
         deporteID = $(this).attr("id");
         //console.log(deporteID+" "+provincia);
         $.ajax({
-            url: "model/seleccion/mostrar_centros_cerca.php",         
+            url: "model/Maps/sideMaps/datosCentros.php",         
            // url: "model/seleccion/mostrar_centros_cerca.php?deporte="+deporteID+"&provincia="+provincia, 
             data: "deporte=" + deporteID + "&provincia=" + provincia,
             dataType: 'json',
             success: function(centros){
-                    //TODO 
+                    
                     centros.forEach(n => {
                     console.log(n);
                     });
-                    //window.location="model/seleccion/resultado_seleccion_deportes.php?deporte="+deporteID+"&provincia="+provincia;
-                    window.location="layout/resultado_seleccion_deportes.php?deporte="+deporteID+"&provincia="+provincia;
                     
+                    window.location="layout/resultado-centros-busqueda.php?deporte="+deporteID+"&provincia="+provincia;
             }
             
         });
