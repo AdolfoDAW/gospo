@@ -13,6 +13,10 @@
     width: 90%;
 }
 
+.nav-link{
+    color:tomato !important;
+}
+
 /* ======================== MAIN GRID ===============================*/
 
 .container-grid{
@@ -70,7 +74,6 @@
 
 #content_sidebar{
     margin:0px;
-    padding: 0px;
     overflow:auto;
     height: 90vh; 
     padding: 10px;
@@ -112,6 +115,19 @@
 
 /* ======================== Resultado Centros =======================*/
 
+#volver-resultados-centros{
+    color:#1f77e2;
+    border:none;
+    font-size: 24px;
+    background-color: transparent;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.volver-resultados-centros-texto{
+    font-size: 18px;
+    margin-top: -5px;
+}
 
 .searchable-container{
     display: flex;
@@ -148,7 +164,11 @@
 @media(max-width: $phone-media-max-size+91) {
     .panel.panel-horizontal {
         width: auto ;
-    }   
+    }  
+    
+    #volver-resultados-centros{
+        margin-bottom: 0px;
+    }
 }
 
 
@@ -175,7 +195,14 @@
 }
 
 .rate-stars>span{
-   color:#F0AD4E; 
-   margin-left: 5px;
-   margin-right: 5px;
+    color:#F0AD4E; 
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+/*============   DEPORTIVO SELECTED ================*/
+
+#btn-reserva{
+    margin-top: 10px;
 }
