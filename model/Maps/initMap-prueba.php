@@ -1,14 +1,14 @@
-
+ 
 <script>
     function initMap() {
-
+        reservas = [];
         markadores = [];
         var prev_infowindow;
         var centrado = {lat: 39.478758, lng: -0.414405};
         var positionSelected = "<?php echo $_SESSION["ciudad"] ?>";
         $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + positionSelected + "&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
             centrado = {lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng};
-             map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 9,
                 center: centrado
             });
@@ -70,6 +70,7 @@
                                 success: function (seleccionado) {
 
                                     seleccionado.forEach(n => {
+                                        var datosJson = n.id_centro + ":" + n.id_deporte + ":" + n.precio_hora + ":" + n.url_img + ":" + n.direccion + ":" + n.municipio;
                                         id_centro = n.id_centro;
                                         id_deporte = n.id_deporte;
                                         $("#content_sidebar").empty("");
@@ -104,7 +105,7 @@
                                                 /*RESERVAS*/'  <div class="tab-pane fade show active" id="reservas" role="tabpanel" aria-labelledby="home-tab">' +
                                                 '<hr><h5>Día:</h5><input class="datepicker">' +
                                                 '<hr><h5>Hora:</h5><input class="timepicker" readonly>' +
-                                                '<hr><br><button id="btn-reserva" class="btn btn-info">Reservar</button>' +
+                                                '<hr><br><button id="btn-reserva" data="' + datosJson + '" class="btn btn-info">Reservar</button>' +
                                                 '</div>' +
                                                 /*INFO*/'  <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab">Información del centro</div>' +
                                                 /*FOTOS*/'  <div class="tab-pane fade" id="fotos" role="tabpanel" aria-labelledby="contact-tab">Fotos</div>' +
@@ -113,6 +114,22 @@
                                                 '</div>' +
                                                 '</div>' +
                                                 '</div>');
+                                    });
+                                    $("#reservas").ready(function () {
+                                        $("#btn-reserva").on("click", function () {
+                                            datos = $(this).attr("data");
+                                            datosSplit = datos.split(":");
+
+
+                                            var horaSelect = ($("#input_timepicker").val());
+                                            var fechaSelect = ($("#input_datepicker").val());
+
+                                            reserva = {id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: 1, hora: horaSelect, fecha: fechaSelect};
+
+                                            reservas.push(reserva);
+
+                                        });
+
                                     });
 
                                     $('.datepicker').pickadate({

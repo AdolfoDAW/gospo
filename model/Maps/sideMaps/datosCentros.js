@@ -1,3 +1,4 @@
+ reservas=[];
 $(document).ready(function () {
     $.ajax({
         url: '../model/Maps/sideMaps/datosCentros.php',
@@ -118,8 +119,12 @@ $(document).ready(function () {
                     success: function (seleccionado) {
 
                         seleccionado.forEach(n => {
+                            var datosJson =  n.id_centro+":"+ n.id_deporte +":"+n.precio_hora+":"+ n.url_img+":"+ n.direccion+":"+ n.municipio;
                             id_centro = n.id_centro;
                             id_deporte = n.id_deporte;
+
+
+
                             $("#content_sidebar").empty("");
                             if ($('.left_inner').resizable()) {
                                 $('.left_inner').resizable('destroy');
@@ -169,9 +174,9 @@ $(document).ready(function () {
                                     '</ul>' +
                                     '<div class="tab-content" id="myTabContent">' +
                                     /*RESERVAS*/'  <div class="tab-pane fade show active" id="reservas" role="tabpanel" aria-labelledby="home-tab">' +
-                                    '<hr><h5>Día:</h5><input class="datepicker">' +
-                                    '<hr><h5>Hora:</h5><input class="timepicker" readonly>' +
-                                    '<hr><br><button id="btn-reserva" class="btn btn-info">Reservar</button>' +
+                                    '<hr><h5>Día:</h5><input class="datepicker" id="input_datapicker">' +
+                                    '<hr><h5>Hora:</h5><input class="timepicker" id="input_timepicker" readonly>' +
+                                    '<hr><br><button id="btn-reserva" data="' + datosJson + '" class="btn btn-info">Reservar</button>' +
                                     '</div>' +
                                     /*INFO*/'  <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab" style="padding-top:10px">' +
                                     '<p><b>Nombre: </b>' + n.nombre + '</p><hr>' +
@@ -187,6 +192,22 @@ $(document).ready(function () {
                                     '</div>' +
                                     '</div>' +
                                     '</div>');
+                           // ------------- BOTON RESERVAR --------------- // 
+                            $("#reservas").ready(function () {
+                                $("#btn-reserva").on("click", function () {
+                                   datos= $(this).attr("data");
+                                      datosSplit =datos.split(":");
+                                      
+                               
+                                  var horaSelect=($("#input_timepicker").val());
+                                  var fechaSelect=($("#input_datepicker").val());
+                                  
+                             reserva={id_centro:datosSplit[0],id_deporte:datosSplit[1],precio_hora:datosSplit[2],imagen:datosSplit[3],direccion:datosSplit[4],municipio:datosSplit[5],pista:1,hora:horaSelect,fecha:fechaSelect};
+                             
+                             reservas.push(reserva);
+                                });
+
+                            });
                         });
 
                         $('.datepicker').pickadate({
@@ -239,6 +260,6 @@ $(document).ready(function () {
             });
         }
     });
-});
 
+});
 

@@ -4,9 +4,23 @@ include '../DBA/DBA.php';
 
 if ($conection) {
    
-        echo $_GET["value"];
-        echo $_POST["value"];
+      $carrito= $_POST["carro"];
+      $carro= json_decode($carrito);
+      
+      
+      
+      foreach($carro as $reserva){
+         $id_centro= $reserva->id_centro;
+         $id_deporte= $reserva->id_deporte;
+         $fecha= $reserva->fecha;
+         $hora= $reserva->hora;
+         $precio= $reserva->precio;
+         $pista= $reserva->pista;
+        $usuario = 1;
+         echo $id;
+      }
+        
     
 }
-echo json_encode($conection);
+
 ?>

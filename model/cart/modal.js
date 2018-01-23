@@ -59,19 +59,20 @@ $(document).ready(function () {
                 $("#carrito__contenido").html("");
                 reservas = "";
             });
-            $("#boton__reservar").on("click",function (){
-                 $.ajax({
-        url: 'model/cart/reservas.php',
-        type: 'get',
-        dataType: 'json',
-        data: "value="+reservas,
-        error: alert("no hace anda"),
-        success:  function (reservado) {
-            alert("si va");
-        }
-            
-         
-            });
+            $("#boton__reservar").on("click", function () {
+                var envio = JSON.stringify(reservas);
+                $.ajax({
+                    url: 'model/cart/reservas.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {carro: envio},
+                    error: alert("no hace anda"),
+                    success: function (reservado) {
+                        alert("si va");
+                    }
+
+
+                });
             });
         });
     });
@@ -79,13 +80,14 @@ $(document).ready(function () {
 });
 
 function articulos() {
-var cantidad = reservas.length;
-if (cantidad >=1){
-$(".nav-item__carro__contador").text(cantidad);
-}else{
-    $(".nav-item__carro__contador").text("");
+    var cantidad = reservas.length;
+    if (cantidad >= 1) {
+        $(".nav-item__carro__contador").text(cantidad);
+    } else {
+        $(".nav-item__carro__contador").text("");
+    }
 }
-};
+;
 
 function precioTotal() {
     var total = 0;
@@ -94,5 +96,6 @@ function precioTotal() {
     });
     $("#carrito__precioTotal").text(total + " €");
 
-};
+}
+;
 
