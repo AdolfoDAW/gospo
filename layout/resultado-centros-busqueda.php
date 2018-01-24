@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(isset($_GET["deporte"])){
+
+if (isset($_GET["deporte"])) {
     $_SESSION["deporte"] = $_GET["deporte"];
     $_SESSION["ciudad"] = $_GET["provincia"];
-}else{
+} else {
     $_SESSION["deporte"] = $_POST["deportes-browser"];
     $_SESSION["ciudad"] = $_POST["ciudades-browser"];
 }
