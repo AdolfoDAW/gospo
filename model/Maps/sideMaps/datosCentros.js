@@ -199,10 +199,10 @@ $(document).ready(function () {
                                     datosSplit = datos.split(":");
 
 
-                                    var horaSelect = ($("#input_timepicker").val());
+                                    var horaSelect = tiempoElegido;
+                                    console.log(tiempoElegido);
                                     //     var fechaSelect = ($("#input_datepicker").val());
                                     var fechaSelect = fechaElegida;
-                                    console.log(fechaElegida);
                                     var pistaSelect = 1;
 
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
@@ -219,7 +219,7 @@ $(document).ready(function () {
                                         carro.push(reserva);
                                         localStorage.setItem("carro", JSON.stringify(carro));
                                         articulos();
- console.log("ass");
+                                        console.log("ass");
                                     }
 
 
@@ -262,7 +262,10 @@ $(document).ready(function () {
                                             interval: 60,
                                             min: [10, 00],
                                             max: [22, 0],
-                                            disable: resultado
+                                            disable: resultado,
+                                            onSet: function () {
+                                                tiempoElegido = this.get('select', 'H:i');
+                                            }
                                         });
                                         tpicker = timePicker.pickatime('picker');
                                         if (resultado.length !== 0) {
@@ -274,6 +277,7 @@ $(document).ready(function () {
                                 });
 
                                 fechaElegida = this.get('select', 'yyyy-mm-dd');
+
                             }
 
                         });
