@@ -167,7 +167,6 @@ if (isset($_GET["deporte"])) {
             </div>
         </div>
         <!-- Modal Añadir Reserva-->
-        <!-- Modal -->
         <div class="modal fade" id="addReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-side modal-top-left" role="document">
                 <div class="modal-content">
@@ -183,6 +182,26 @@ if (isset($_GET["deporte"])) {
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="button" class="btn btn-primary boton--add">Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Realizar Pedido Reservas-->
+        <div class="modal fade" id="Comprar-Reservas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-side modal-bottom-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Reservas</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>¿Realizar la reserva y pago?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary boton--pagar-reservar">Reservar</button>
                     </div>
                 </div>
             </div>

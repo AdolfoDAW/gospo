@@ -6,8 +6,7 @@ if ($conection) {
 
     $carrito = $_POST["carro"];
     $carro = json_decode($carrito);
-    // $carro=$_POST["carro"];
-    print_r($carro);
+   
 
     foreach ($carro as $reserva) {
         $id_centro = $reserva->id_centro;

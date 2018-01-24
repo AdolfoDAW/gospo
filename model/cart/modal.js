@@ -16,13 +16,13 @@ $(document).ready(function () {
 
         var myvar = '<div class="contenedor__carrito">' + ' <div class="carrito__productos">';
         var precioFinal = 0;
-       
+
         var jcarro = localStorage.getItem("carro");
         var carro = JSON.parse(jcarro);
-        
-        
+
+
         carro.forEach(n => {
-            
+
             var url = "";
             if (document.referrer === "http://localhost/gospo/index.html") {
                 url = "url(\'" + n.imagen + "\')";
@@ -72,31 +72,33 @@ $(document).ready(function () {
             });
             $("#boton__vaciar").on("click", function () {
                 $("#carrito__contenido").html("");
-//                var reset = [];
-//                localStorage.setItem("carro",reset);
-//                console.log(localStorage.getItem("carro"));
+
 
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
 
             });
             $("#boton__reservar").on("click", function () {
-               var envio= localStorage.getItem("carro"); 
-               // envio= JSON.parse(envio);
-               
-                $.ajax({
-                    url: '/gospo/model/cart/reservas.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {carro: envio},
-                    error: alert("no hace anda"),
-                    success: function (reservado) {
-                        alert("si va");
-                    }
+                $("#Comprar-Reservas").modal("show");
+                var envio = localStorage.getItem("carro");
 
-
-                });
             });
+        });
+    });
+    $(".boton--pagar-reservar").on("click", function () {
+        var envio = localStorage.getItem("carro");
+
+
+        $.ajax({
+            url: '/gospo/model/cart/reservas.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {carro: envio},           
+            success: function (reservado) {
+                alert("si va");
+            }
+
+
         });
     });
 
