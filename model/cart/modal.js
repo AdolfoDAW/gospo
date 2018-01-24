@@ -80,7 +80,7 @@ $(document).ready(function () {
             });
             $("#boton__reservar").on("click", function () {
                 $("#Comprar-Reservas").modal("show");
-                var envio = localStorage.getItem("carro");
+                
 
             });
         });
