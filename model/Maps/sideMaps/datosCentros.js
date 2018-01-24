@@ -198,10 +198,11 @@ $(document).ready(function () {
                                     datos = $(this).attr("data");
                                     datosSplit = datos.split(":");
 
-                                  
+
                                     var horaSelect = ($("#input_timepicker").val());
-                               //     var fechaSelect = ($("#input_datepicker").val());
-                                    var fechaSelect = "2018-02-08";
+                                    //     var fechaSelect = ($("#input_datepicker").val());
+                                    var fechaSelect = fechaElegida;
+                                    console.log(fechaElegida);
                                     var pistaSelect = 1;
 
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
@@ -210,15 +211,15 @@ $(document).ready(function () {
                                         var reservas = [];
                                         reservas.push(reserva);
                                         localStorage.setItem("carro", JSON.stringify(reservas));
-                                          
                                         articulos();
+                                        console.log("hola");
                                     } else {
                                         jcarro = localStorage.getItem("carro");
                                         var carro = JSON.parse(jcarro);
                                         carro.push(reserva);
                                         localStorage.setItem("carro", JSON.stringify(carro));
                                         articulos();
-                                          
+ console.log("ass");
                                     }
 
 
@@ -271,7 +272,10 @@ $(document).ready(function () {
                                         }
                                     }
                                 });
+
+                                fechaElegida = this.get('select', 'yyyy-mm-dd');
                             }
+
                         });
                     }
                 });

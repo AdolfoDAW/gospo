@@ -36,8 +36,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
         <link href="../styles/css/carro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <!--Prueba-->
-        <script src="../model/cart/jsonPrueba.js" type="text/javascript"></script>
+         
         <!--Jquery and Jquery UI -->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -61,10 +60,11 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
 
         </script>
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
+         <!-- Carro compra-->
+        <script src="../model/cart/modal.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>
-        <!-- Carro compra-->
-        <script src="../model/cart/modal.js" type="text/javascript"></script>
+      
 
         <div class="container-grid">
             <div class="header">

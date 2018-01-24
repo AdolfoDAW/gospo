@@ -33,7 +33,7 @@ $(document).ready(function () {
             myvar += '<div id="' + n.id + '"class="carrito__item">' +
                     ' <div class="carrito__item__imagen" style="background-image:' + url + ';" ></div>' +
                     ' <div class="carrito__valores">' +
-                    '<div class="carrito__item__descripcion">' + n.direccion + '<p>'+ n.municipio+'</p></div>' +
+                    '<div class="carrito__item__descripcion">' + n.direccion + '<p>' + n.municipio + '</p></div>' +
                     '<div class="carrito__item__horario"><strong>Hora inicio:</strong>' + n.hora + '<p><strong>Fecha: </strong>' + n.fecha + '</p> </div>' +
                     '<div class="carrito__item__precio"><strong>Precio:</strong>' + n.precio_hora + '€</div>' +
                     ' <div class="carrito__item__boton"><button type="button" class="boton__carrito--cancelar"><i class="fas fa-times-circle"></i></button></div></div><hr></div></div>';
@@ -53,12 +53,12 @@ $(document).ready(function () {
 
         $(".contenedor__carrito").ready(function () {
             $(".boton__carrito--cancelar").on("click", function () {
-               
+
                 var id_padre = $(this).parent().parent().parent().attr("id");
                 console.log(id_padre);
                 //borra el elemento de la memoria
-               listadoItems= localStorage.getItem("carro");
-               items = JSON.parse(listadoItems);
+                listadoItems = localStorage.getItem("carro");
+                items = JSON.parse(listadoItems);
                 for (var i = 0; i < items.length; i++) {
                     if (items[i].id === id_padre) {
                         items.splice(i, 1);
@@ -76,6 +76,7 @@ $(document).ready(function () {
 //                var reset = [];
 //                localStorage.setItem("carro",reset);
 //                console.log(localStorage.getItem("carro"));
+
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
 
@@ -101,13 +102,15 @@ $(document).ready(function () {
 });
 
 function articulos() {
-    var jcarro = localStorage.getItem("carro");
-    var carro = JSON.parse(jcarro);
-    var cantidad = carro.length;
-    if (cantidad >= 1) {
-        $(".nav-item__carro__contador").text(cantidad);
-    } else {
-        $(".nav-item__carro__contador").text("");
+    if (localStorage.getItem("carro") !== null) {
+        var jcarro = localStorage.getItem("carro");
+        var carro = JSON.parse(jcarro);
+        var cantidad = carro.length;
+        if (cantidad >= 1) {
+            $(".nav-item__carro__contador").text(cantidad);
+        } else {
+            $(".nav-item__carro__contador").text("");
+        }
     }
 }
 ;
