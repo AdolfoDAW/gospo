@@ -1,7 +1,12 @@
 <?php
 session_start();
-$_SESSION["deporte"] = $_POST["deportes-browser"];
-$_SESSION["ciudad"] = $_POST["ciudades-browser"];
+if(isset($_GET["deporte"])){
+    $_SESSION["deporte"] = $_GET["deporte"];
+    $_SESSION["ciudad"] = $_GET["provincia"];
+}else{
+    $_SESSION["deporte"] = $_POST["deportes-browser"];
+    $_SESSION["ciudad"] = $_POST["ciudades-browser"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +61,7 @@ $_SESSION["ciudad"] = $_POST["ciudades-browser"];
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY&callback=initMap">
 
         </script>
+
         <script src="../model/Maps/sideMaps/datosCentros.js" type="text/javascript"></script>
         <!-- Effects-->
         <script src="../vendor/jquery/effects/slider.js" type="text/javascript"></script>

@@ -1,0 +1,48 @@
+/* 
+    Created on : Jan 16, 2018, 6:04:23 PM
+    Author     : Pyrena
+*/
+html {
+  box-sizing: border-box; }
+
+*, *:after, *:before {
+  box-sizing: inherit; }
+
+.deportes-seleccion {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px; }
+
+.cabecera-selecciones {
+  margin-left: 10px; }
+
+.deportes-seleccion-listado {
+  list-style-type: none; }
+
+.card:hover {
+  cursor: pointer; }
+
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  border-radius: .28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5; }
+
+.card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  box-shadow: none; }
+
+.card-img-top {
+  display: block;
+  width: 100%;
+  height: auto; }

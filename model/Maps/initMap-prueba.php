@@ -1,14 +1,13 @@
 
 <script>
     function initMap() {
-
         markadores = [];
         var prev_infowindow;
         var centrado = {lat: 39.478758, lng: -0.414405};
         var positionSelected = "<?php echo $_SESSION["ciudad"] ?>";
         $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + positionSelected + "&key=AIzaSyBiTt0JoSwwww7v-t8xbt_40Ph6MvxeTMY", function (data) {
             centrado = {lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng};
-             map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 9,
                 center: centrado
             });
