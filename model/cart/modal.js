@@ -81,9 +81,11 @@ $(document).ready(function () {
 
             });
             $("#boton__reservar").on("click", function () {
-                var envio = JSON.stringify(reservas);
+               var envio= localStorage.getItem("carro"); 
+               // envio= JSON.parse(envio);
+               
                 $.ajax({
-                    url: 'model/cart/reservas.php',
+                    url: '/gospo/model/cart/reservas.php',
                     type: 'POST',
                     dataType: 'json',
                     data: {carro: envio},
