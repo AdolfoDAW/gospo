@@ -201,17 +201,20 @@ $(document).ready(function () {
                                     //     var fechaSelect = ($("#input_datepicker").val());
                                     var fechaSelect = fechaElegida;
                                     var pistaSelect = 1;
-
+                                    
                                     var id = datosSplit[0] + datosSplit[1] + pistaSelect + horaSelect + fechaSelect;
-                                    reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
+                                    reserva = {id: id, id_centro: datosSplit[0], id_deporte: datosSplit[1], precio_hora: datosSplit[2], 
+                                        imagen: datosSplit[3], direccion: datosSplit[4], municipio: datosSplit[5], 
+                                        pista: pistaSelect, hora: horaSelect, fecha: fechaSelect};
 
                                     if (localStorage.getItem("carro") === null) {
+                                        
                                         var reservas = [];
                                         reservas.push(reserva);
                                         localStorage.setItem("carro", JSON.stringify(reservas));
                                         articulos();
                                         console.log("hola");
-
+                                        
                                     } else {
                                         var add = true;
                                         jcarro = localStorage.getItem("carro");
@@ -274,8 +277,10 @@ $(document).ready(function () {
                                             min: [10, 00],
                                             max: [22, 0],
                                             disable: resultado,
-                                            onSet: function () {
+                                            onSet: function () { 
+                                                
                                                 tiempoElegido = this.get('select', 'H:i');
+                                                
                                             }
                                         });
                                         tpicker = timePicker.pickatime('picker');
@@ -288,7 +293,7 @@ $(document).ready(function () {
                                 });
 
                                 fechaElegida = this.get('select', 'yyyy-mm-dd');
-
+                                
                             }
 
                         });

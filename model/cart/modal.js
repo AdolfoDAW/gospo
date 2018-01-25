@@ -19,7 +19,11 @@ $(document).ready(function () {
 
         var jcarro = localStorage.getItem("carro");
         var carro = JSON.parse(jcarro);
-
+        if (carro ===null){
+            $("#carrito__contenido").html("");
+           var carroEmpty="<h5>No tienes ningún articulo en el carro</h5>"; 
+        $("#carrito__contenido").append(carroEmpty);
+        }else{
 
         carro.forEach(n => {
 
@@ -46,7 +50,7 @@ $(document).ready(function () {
 
         $("#carrito__contenido").html("");
         $("#carrito__contenido").append(myvar);
-
+    }
 
         // Carga de functiones en botones del carro  //
 
@@ -97,11 +101,13 @@ $(document).ready(function () {
 
                 $("#Modal__carrito").modal("hide");
                 $("#Comprar-Reservas").modal("hide");
-       //llama a modal de compra con exito         
+                //llama a modal de compra con exito         
                 $("#ReservaRealizada").modal("show");
                 $("#carrito__contenido").html("");
                 localStorage.removeItem("carro");
                 $(".nav-item__carro__contador").text("");
+                 $('.datepicker').val("");
+                  $('.timepicker').val("");
             }
 
 
